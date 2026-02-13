@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <p id="details"></p>
+
+    <a href="/">Home</a> 
+    <a href="/admin">Admin LogIn</a>
+    
+    <script>
+        async function loadData(){
+            const res = await fetch("/api/details");
+            const data = await res.json();
+            let students = "";
+            data.forEach(msg =>
+                students +=
+                `<div class="card">
+                <h3>${msg.Name}</h3>
+                <h3>${msg.Surname}</h3>
+                <h3>${msg.Course}</h3>
+                <small>${msg.DateRegistered}<small><br>
+                <button type="button" onclick="removeStudent(${msg.Id})">Delete Student</button><br>
+                <button type="button" onclick="updateStudentCourse(${msg.Id})">Edit Student</button><br>
+                </div>`   
+            );
+            document.getElementById("details").innerHTML = students;
+        }
+
+
+        async function removeStudent(id){
+            if(!confirm("Do you really want to delete the student?")) return;
+
+            //"api/del/details/:id"
+            
+            await fetch(`/api/del/details/${id}` ,{
+                method:"DELETE"
+            });
+            alert("Successfully deleted the student");
+            loadData();
+        }
+
+
+        async function updateStudentCourse(Id){
+           // /api/student/edit/:id
+           const newCourse = prompt("Enter the Course Name");
+
+           if(!newCourse) return;
+
+           try{
+                await fetch(`api/student/edit/${Id}`, {
+                    method:"PUT",
+                    headers:{
+                        "Content-Type" : "application/json"
+                    },
+                    body: JSON.stringify({
+                        Course: newCourse
+                    })
+                })
+                alert("Successfully changed the course!!!");
+
+           }catch(err){
+                alert("Server error: " + err);
+           }
+        }
+
+        loadData();
+
+    </script>
+</body>
+
+</html>

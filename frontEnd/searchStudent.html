@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Student ID" id="userId" required>
+
+    <button type="button" onclick="searchStudent()">Search</button>
+
+    <script>
+        async function searchStudent(){
+            const id = Number(document.getElementById("userId").value);
+
+            const res = await fetch(`/api/search/${id}`);
+
+            const results = await res.json();
+
+            if(!results){
+                alert("System Error"); return;
+            }
+
+            let theStudent = "";
+
+            results.foreach(msg => {
+                theStudent+= 
+                `<div>
+                    <h3>${msg.Name}</h3><br>
+                    <h3>${msg.Surname}</h3>
+                    <h3>${msg.Course}</h3>
+                    <small>${msg.DateRegistered}</small>
+                </div>
+                `;
+            })
+        }
+    </script>
+</body>
+</html>

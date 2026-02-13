@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <p id="SuccessMessage">Success Message</p>
+    <a href="/">Home</a>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        const name = params.get("name");
+
+        document.getElementById("SuccessMessage").textContent = `
+            Thank you ${name}, we have received your application....
+        `;
+    </script> 
+</body>
+</html>

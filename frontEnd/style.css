@@ -1,0 +1,10 @@
+*{
+    background-color: black;
+    color: white;
+}
+
+.card{
+    display:flex;
+    text-align: center;
+    justify-content: center;
+}
