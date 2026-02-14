@@ -1,8 +1,10 @@
 const sql = require("mssql/msnodesqlv8");
 
+require("dotenv").config();
+
 const config ={
     connectionString:
-    "Driver={ODBC Driver 18 for Sql Server};Server=SHEMA\\SQLEXPRESS01;Database=StudentDB;Trusted_Connection=yes;Encrypt=no;TrustServerCertificate=yes",
+    `Driver={ODBC Driver 18 for Sql Server};Server=${process.env.USER_DB};Database=StudentDB;Trusted_Connection=yes;Encrypt=no;TrustServerCertificate=yes`,
 };
 
 async function connectToDB(){
