@@ -73,11 +73,11 @@ header{
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    background-color:rgb(254, 255, 255)  /* Orange background for logo */
+    background-color:rgb(254, 255, 255) 
 }
 
 .logo-box img{
-    height: 60px;  /* Adjust logo size as needed */
+    height: 60px;  
 }
 
 h1{
