@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body> 
+    <header>
+        <div class="logo-box">
+          
+        </div>
+        </header>
 
-    <form action="/submit-application"  method="post">
-
-        <input type="text" name="name" placeholder="Name" required><br><br>
-
-        <input type="text" name="surname" placeholder="Suraname" required><br><br>
-
-        <input type="text" name="course" placeholder="Course Name" required><br><br>
-
+    <form action="/submit-application" method="post">
+        <h2>Student Application</h2>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="surname" placeholder="Surname" required>
+        <input type="text" name="course" placeholder="Course Name" required>
         <button type="submit">Submit Application</button>
-        
     </form>
 
-    <a href="/admin">Admin LogIn</a>
-
-    <br><br>
+    <a href="/admin" style="margin-top: 20px; color: #3b1c4b;">Admin LogIn</a>
 </body>
 
 
